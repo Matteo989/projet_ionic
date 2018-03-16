@@ -12,6 +12,7 @@ import { ConnexionPage } from '../pages/connexion/connexion';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Contacts } from '@ionic-native/contacts';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
+    Contacts,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

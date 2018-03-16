@@ -15,11 +15,20 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class GaleriePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+	constructor(public navCtrl: NavController, public navParams: NavParams) {
+	}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad GaleriePage');
-  }
+	ionViewDidLoad() {
+	    console.log('ionViewDidLoad GaleriePage');
+	}
+
+  	doRefresh(refresher) {
+    	console.log('Begin async operation', refresher);
+
+    	setTimeout(() => {
+      		console.log('Async operation has ended');
+      		refresher.complete();
+    	}, 2000);
+  	}
 
 }

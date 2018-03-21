@@ -10,6 +10,8 @@ import { DatesPage } from '../pages/dates/dates';
 import { ContactPage } from '../pages/contact/contact';
 import { ConnexionPage } from '../pages/connexion/connexion';
 
+import { HttpModule } from '@angular/http';
+import { IonicStorageModule } from '@ionic/storage';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Contacts } from '@ionic-native/contacts';
@@ -26,7 +28,9 @@ import { Contacts } from '@ionic-native/contacts';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [

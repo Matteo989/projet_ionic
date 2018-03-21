@@ -19,17 +19,17 @@
 <ion-content padding>
 	<ion-list>
 		<ion-item>
-			<ion-input type="text" [(ngModel)]="login" placeholder="Utilisateur" ngControl="login"></ion-input>
+			<ion-input type="text" [(ngModel)]="connexion.login" placeholder="Utilisateur" ngControl="login"></ion-input>
 		</ion-item>
 		<ion-item>
-			<ion-input type="password" [(ngModel)]="password" placeholder="Mot de passe" ngControl="password"></ion-input>
+			<ion-input type="password" [(ngModel)]="connexion.password" placeholder="Mot de passe" ngControl="password"></ion-input>
 		</ion-item>
 		<ion-item>
 			<ion-label>Se souvenir de moi</ion-label>
-			<ion-checkbox dark [(ngModel)]="rememberMe" ngControl="rememberMe"></ion-checkbox>
+			<ion-checkbox dark [(ngModel)]="connexion.rememberMe" ngControl="rememberMe"></ion-checkbox>
 		</ion-item>
 	</ion-list>
 	<div>
-		<button ion-button color="secondary" type="submit" (click)="connexion()">Valider</button>
+		<button ion-button color="secondary" type="submit" (click)="connexionOK()">Valider</button>
 	</div>
 </ion-content>

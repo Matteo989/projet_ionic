@@ -20,9 +20,9 @@
 <ion-content padding>
 
 		<!-- Raffaichissement de la page -->
-	<ion-refresher (ionRefresh)="rafraichirListe($event)">
-	 	<ion-refresher-content>
-		</ion-refresher-content>
+	<ion-refresher (ionRefresh)="doRefresh($event)">
+	    <ion-refresher-content>
+      </ion-refresher-content>
 	</ion-refresher>
 
 		<!-- Cards -->

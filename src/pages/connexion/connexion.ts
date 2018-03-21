@@ -31,7 +31,7 @@ export class ConnexionPage {
 
   connexionOK() {
     console.log(this.connexion);
-    this.http.get('http://www.sebastien-thon.fr/cours/M4104Cip/projet/index.php?connexion&login=classe1&mdp=mdp1')
+    this.http.get('http://www.sebastien-thon.fr/cours/M4104Cip/projet/index.php?connexion&login={{connexion.login}}&mdp={{connexion.password}}')
       .map(res => res.json())
       .subscribe(data => {
         this.resultats = data;

@@ -17,44 +17,20 @@
 
 
 <ion-content padding>
-	<ion-refresher (ionRefresh)="doRefresh($event)">
-	    <ion-refresher-content>
+
+	<!-- Raffaichissement de la page -->
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content>
       </ion-refresher-content>
-	</ion-refresher>
+  </ion-refresher>
+
+    <!-- Cards -->
+  <ion-card *ngFor="let d of date">
+
+    <ion-card-title> {{d.titre}} </ion-card-title>
+    <h3> {{d.date}} </h3>
+    <p> {{d.texte}}  </p>
+
+  </ion-card>
+
 </ion-content>
-
-
-<!--Dans dates, vous avez un tableau d'objets décrivant des dates importantes (date de
-rentrée, date de fête de l'école, …) ayant les champs suivants :
-
-Champ Signification
-titre Le titre de la date
-date La date et l'heure
-classe 0 si la date concerne toute l'école, ou sinon le numéro de la classe (1,2,3)
-texte Le texte décrivant la date
-
-"dates": [
-{
-"titre": "Première date",
-"date": "2018-02-14T10:00:00Z",
-"classe": 0,
-"texte": "Le texte de la première date"
-},
-{
-"titre": "Deuxième date",
-"date": "2018-02-20T08:00:00Z",
-"classe": 1,
-"texte": "Le texte de la deuxième date"
-},
-{
-"titre": "Troisième date",
-"date": "2018-03-01T13:30:00Z",
-"classe": 1,
-"texte": "Le texte de la troisième date"
-}
-]
-
-Sur la page des dates importantes, à côté de chaque date un bouton (ou Checkbox,
-Toggle, ...) permettra à l'utilisateur d'ajouter cette date à l'agenda de son smartphone.
-https://ionicframework.com/docs/native/calendar/
--->

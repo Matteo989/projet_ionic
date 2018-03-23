@@ -17,7 +17,12 @@ import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/cont
 
 export class ContactPage {
 
-  contact: {name: string, phoneNumbers: string};
+  contactObject = {
+    displayName: '',
+    nickName: '',
+    phoneNumber: '',
+    phoneType: ''
+  }
 
 	constructor(private contacts: Contacts, public navCtrl: NavController, public navParams: NavParams) {
 	}
@@ -27,12 +32,24 @@ export class ContactPage {
 	}
 
 	ajouterContact() {
-		let contact: Contact = this.contacts.create();
-		contact.name = new ContactName(null, 'Smith', 'John');
-		contact.phoneNumbers = [new ContactField('mobile', '6471234567')];
-		contact.save().then(
-  		() => console.log('Contact saved!', contact),
-  		(error: any) => console.error('Error saving contact.', error)
-		);
+		var contact = this.contacts.create();
+    contact.displayName = 'Ecole le Petit Prince';
+    contact.nickname = 'Ecole le Petit Prince';
+     
+    var field = new ContactField();
+    field.type = 'mobile';
+    field.value = '0412345678';
+    field.pref = true;
+     
+    var numberSection = [];
+    numberSection.push( field );
+    contact.phoneNumbers = numberSection;
+     
+    contact.save().then((value) => {
+        console.log('saved', value);
+        this.navCtrl.pop();
+    }, (error) => {
+      console.log(error);
+    })   
 	}
 }

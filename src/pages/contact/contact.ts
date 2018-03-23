@@ -17,20 +17,22 @@ import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/cont
 
 export class ContactPage {
 
-  	constructor(private contacts: Contacts, public navCtrl: NavController, public navParams: NavParams) {
-  	}
+  contact: {name: string, phoneNumbers: string};
 
-  	ionViewDidLoad() {
-    	console.log('ionViewDidLoad ContactPage');
-  	}
+	constructor(private contacts: Contacts, public navCtrl: NavController, public navParams: NavParams) {
+	}
 
-  	ajouterContact() {
-  		let contact: Contact = this.contacts.create();
-  		contact.name = new ContactName(null, 'Smith', 'John');
-  		contact.phoneNumbers = [new ContactField('mobile', '6471234567')];
-  		contact.save().then(
-    		() => console.log('Contact saved!', contact),
-    		(error: any) => console.error('Error saving contact.', error)
-  		);
-  	}
+	ionViewDidLoad() {
+  	console.log('ionViewDidLoad ContactPage');
+	}
+
+	ajouterContact() {
+		let contact: Contact = this.contacts.create();
+		contact.name = new ContactName(null, 'Smith', 'John');
+		contact.phoneNumbers = [new ContactField('mobile', '6471234567')];
+		contact.save().then(
+  		() => console.log('Contact saved!', contact),
+  		(error: any) => console.error('Error saving contact.', error)
+		);
+	}
 }

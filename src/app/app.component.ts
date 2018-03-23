@@ -9,6 +9,7 @@ import { GaleriePage } from '../pages/galerie/galerie';
 import { DatesPage } from '../pages/dates/dates';
 import { ContactPage } from '../pages/contact/contact';
 import { ConnexionPage } from '../pages/connexion/connexion';
+import { SlidePage } from '../pages/slide/slide';
 
 
 @Component({

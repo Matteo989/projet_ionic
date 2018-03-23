@@ -9,6 +9,7 @@ import { GaleriePage } from '../pages/galerie/galerie';
 import { DatesPage } from '../pages/dates/dates';
 import { ContactPage } from '../pages/contact/contact';
 import { ConnexionPage } from '../pages/connexion/connexion';
+import { SlidePage } from '../pages/slide/slide';
 
 import { HttpModule } from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage';
@@ -24,7 +25,8 @@ import { Contacts } from '@ionic-native/contacts';
     GaleriePage,
     DatesPage,
     ContactPage,
-    ConnexionPage
+    ConnexionPage,
+    SlidePage
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,8 @@ import { Contacts } from '@ionic-native/contacts';
     GaleriePage,
     DatesPage,
     ContactPage,
-    ConnexionPage
+    ConnexionPage,
+    SlidePage
   ],
   providers: [
     StatusBar,

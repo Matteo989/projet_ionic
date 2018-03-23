@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { Storage } from '@ionic/storage';
+import { ConnexionPage } from '../connexion/connexion';
 
 
 /**
@@ -18,18 +20,21 @@ import 'rxjs/add/operator/map';
 })
 export class GaleriePage {
 	galerie: any;
+  connexion: {login: string, password: string} = {login:'', password:''};
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
-
-  			// Recuperation des informations de la galerie
-  		this.http.get('http://www.sebastien-thon.fr/cours/M4104Cip/projet/index.php?login=classe1&mdp=mdp1')
-		 .map(res => res.json())
-		 .subscribe(data => {
-		this.galerie = data.galeries;
-		});
-
-     console.log(this.galerie);
-
+  constructor(public navCtrl: NavController, private storage: Storage, public navParams: NavParams, public http: Http) {
+    this.storage.get('login').then((valeur) => {
+      this.connexion.login = valeur;
+      this.storage.get('password').then((valeur) => {
+        this.connexion.password = valeur;
+        this.http.get('http://www.sebastien-thon.fr/cours/M4104Cip/projet/index.php?login=' + this.connexion.login + '&mdp=' + this.connexion.password)
+        .map(res => res.json())
+        .subscribe(data => {
+          this.galerie = data.galeries;
+        });
+        console.log(this.galerie);
+      });
+    });
   }
 
   ionViewDidLoad() {

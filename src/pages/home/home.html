@@ -4,10 +4,14 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Accueil</ion-title>
-  </ion-navbar>
+    <ion-buttons end>
+      <button ion-button (click)='disconnect()' color="primary">Déconnexion</button>
+    </ion-buttons>
+  </ion-navbar> 
 </ion-header>
-
+ 
 <ion-content padding>
+
   <h3>Bienvenue sur l'application "Le petit prince".</h3>
 
   <p>Vous trouverez ici tous les articles concernant l'école mais églament la classe désirée.</p>
@@ -15,5 +19,5 @@
   <p>Lien vers les dates importantes que vous pourrez enregistrer dans votre agenda.</p>
   <p>Lien vers les informations de contact.</p>
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+  
 </ion-content>

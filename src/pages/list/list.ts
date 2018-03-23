@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { Storage } from '@ionic/storage';
+import { ConnexionPage } from '../connexion/connexion';
 
 @Component({
   selector: 'page-list',
@@ -11,15 +13,24 @@ export class ListPage {
 
   articles : any;
   items: any;
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
-    this.http.get('http://www.sebastien-thon.fr/cours/M4104Cip/projet/index.php?login=classe1&mdp=mdp1')
-     .map(res => res.json())
-     .subscribe(data => {
-    this.articles = data.articles;
+  connexion: {login: string, password: string} = {login:'', password:''};
+  
+  constructor(public navCtrl: NavController, private storage: Storage, public navParams: NavParams, public http: Http) {
+    this.storage.get('login').then((valeur) => {
+      this.connexion.login = valeur;
+      this.storage.get('password').then((valeur) => {
+        this.connexion.password = valeur;
+        this.http.get('http://www.sebastien-thon.fr/cours/M4104Cip/projet/index.php?login=' + this.connexion.login + '&mdp=' + this.connexion.password)
+        .map(res => res.json())
+        .subscribe(data => {
+          this.articles = data.articles;
+        });
+      });
     });
-     console.log(this.articles);
+  }
 
+  disconnect() {
+     this.navCtrl.setRoot(ConnexionPage);
   }
 
   Initialisation() {
@@ -45,6 +56,6 @@ export class ListPage {
           console.log('Async operation has ended');
           refresher.complete();
       }, 2000);
-    }
+  }
 
 }

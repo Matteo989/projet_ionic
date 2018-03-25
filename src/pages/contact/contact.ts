@@ -46,27 +46,17 @@ export class ContactPage {
     numberSection.push( field );
     contact.phoneNumbers = numberSection;
      
-    if(this.contacts.find('Ecole')){
+    contact.save().then((value) => {
       let alert = this.alertCtrl.create({
-        title: 'Contact existant',
-        subTitle: 'Le contact existe déjà dans votre répertoire.',
+        title: 'Contact ajouté',
+        subTitle: 'Le contact a bien été ajouté dans votre répertoire.',
         buttons: ['Fermer']
       });
       alert.present();
-    }
-    else {
-      contact.save().then((value) => {
-        let alert = this.alertCtrl.create({
-          title: 'Contact ajouté',
-          subTitle: 'Le contact a bien été ajouté dans votre répertoire.',
-          buttons: ['Fermer']
-        });
-        alert.present();
-        this.navCtrl.pop();
-      }, (error) => {
-        console.log(error);
-      })
-    }
+      this.navCtrl.pop();
+    }, (error) => {
+      console.log(error);
+    })   
 	}
 
 }

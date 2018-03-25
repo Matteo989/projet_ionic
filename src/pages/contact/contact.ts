@@ -59,11 +59,4 @@ export class ContactPage {
     })   
 	}
 
-  
-    let alert = this.alertCtrl.create({
-      title: 'Contact ajouté',
-      subTitle: 'Le contact a bien été ajouté dans votre répertoire.',
-      buttons: ['Fermer']
-    });
-    alert.present();
 }

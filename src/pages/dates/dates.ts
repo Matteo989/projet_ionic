@@ -51,4 +51,8 @@ export class DatesPage {
   	}, 2000);
 	}
 
+  ajouterDate(title, location, notes, startDate) {
+    this.calendar.createEvent(title, location, notes, startDate)
+  }
+
 }

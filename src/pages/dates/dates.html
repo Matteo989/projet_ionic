@@ -30,6 +30,7 @@
     <ion-card-title> {{d.titre}} </ion-card-title>
     <h3> {{d.date}} </h3>
     <p> {{d.texte}}  </p>
+    <button ion-button (click)="ajouterDate(d.titre,d.texte,d.date)">Ajouter au calendrier</button>
 
   </ion-card>
 

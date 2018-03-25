@@ -47,19 +47,23 @@ export class ContactPage {
     contact.phoneNumbers = numberSection;
      
     contact.save().then((value) => {
-      this.presentAlert();
+      let alert = this.alertCtrl.create({
+        title: 'Contact ajouté',
+        subTitle: 'Le contact a bien été ajouté dans votre répertoire.',
+        buttons: ['Fermer']
+      });
+      alert.present();
       this.navCtrl.pop();
     }, (error) => {
       console.log(error);
     })   
 	}
 
-  presentAlert() {
+  
     let alert = this.alertCtrl.create({
       title: 'Contact ajouté',
       subTitle: 'Le contact a bien été ajouté dans votre répertoire.',
       buttons: ['Fermer']
     });
     alert.present();
-  }
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts';
+import { AlertController } from 'ionic-angular';
 
 /**
  * Generated class for the ContactPage page.
@@ -24,7 +25,7 @@ export class ContactPage {
     phoneType: ''
   }
 
-	constructor(private contacts: Contacts, public navCtrl: NavController, public navParams: NavParams) {
+	constructor(private contacts: Contacts, private alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams) {
 	}
 
 	ionViewDidLoad() {
@@ -46,10 +47,19 @@ export class ContactPage {
     contact.phoneNumbers = numberSection;
      
     contact.save().then((value) => {
-        console.log('saved', value);
+        presentAlert();
         this.navCtrl.pop();
     }, (error) => {
       console.log(error);
     })   
 	}
+
+  presentAlert() {
+    let alert = this.alertCtrl.create({
+      title: 'Contact ajouté',
+      subTitle: 'Le contact a bien été ajouté dans votre répertoire.',
+      buttons: ['Fermer']
+    });
+    alert.present();
+  }
 }

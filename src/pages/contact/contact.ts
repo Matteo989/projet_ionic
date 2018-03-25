@@ -41,14 +41,14 @@ export class ContactPage {
     field.type = 'mobile';
     field.value = '0412345678';
     field.pref = true;
-     
+    
     var numberSection = [];
     numberSection.push( field );
     contact.phoneNumbers = numberSection;
      
     contact.save().then((value) => {
-        presentAlert();
-        this.navCtrl.pop();
+      this.presentAlert();
+      this.navCtrl.pop();
     }, (error) => {
       console.log(error);
     })   

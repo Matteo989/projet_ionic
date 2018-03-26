@@ -14,7 +14,7 @@ export class ListPage {
   articles : any;
   items: any;
   connexion: {login: string, password: string} = {login:'', password:''};
-  
+
   constructor(public navCtrl: NavController, private storage: Storage, public navParams: NavParams, public http: Http) {
     this.storage.get('login').then((valeur) => {
       this.connexion.login = valeur;
@@ -27,6 +27,7 @@ export class ListPage {
         });
       });
     });
+    this.Initialisation();
   }
 
   disconnect() {
@@ -41,12 +42,12 @@ export class ListPage {
     this.Initialisation();
 
     let val = event.target.value;
-/*
+
     if(val && val.trim() != '') {
-      this.items= this.items.filter((items) => {
-        return (items.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      this.items = this.items.filter((items) => {
+        return (items.titre.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
-    }*/
+    }
   }
 
   doRefresh(refresher) {

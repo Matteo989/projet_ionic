@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Storage } from '@ionic/storage';
-import { ConnexionPage } from '../connexion/connexion';
+import { PhotoViewer } from '@ionic-native/photo-viewer';
 
 
 /**
@@ -22,7 +22,7 @@ export class GaleriePage {
 	galerie: any;
   connexion: {login: string, password: string} = {login:'', password:''};
 
-  constructor(public navCtrl: NavController, private storage: Storage, public navParams: NavParams, public http: Http) {
+  constructor(private photoViewer: PhotoViewer, public navCtrl: NavController, private storage: Storage, public navParams: NavParams, public http: Http) {
     this.storage.get('login').then((valeur) => {
       this.connexion.login = valeur;
       this.storage.get('password').then((valeur) => {
@@ -42,14 +42,17 @@ export class GaleriePage {
   }
 
   doRefresh(refresher) {
-      console.log('Begin async operation', refresher);
+    console.log('Begin async operation', refresher);
 
-      setTimeout(() => {
-          console.log('Async operation has ended');
-          refresher.complete();
-      }, 2000);
-    }
+    setTimeout(() => {
+        console.log('Async operation has ended');
+        refresher.complete();
+    }, 2000);
+  }
 
-
+  afficher(img) {
+    this.photoViewer.show('http://www.sebastien-thon.fr/cours/M4104Cip/projet/images/' + img.image);
+    console.log(img.image);
+  }
 
 }

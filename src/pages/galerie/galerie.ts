@@ -51,7 +51,8 @@ export class GaleriePage {
   }
 
   afficher(img) {
-    this.photoViewer.show('http://www.sebastien-thon.fr/cours/M4104Cip/projet/images/' + img);
+    this.photoViewer.show('http://www.sebastien-thon.fr/cours/M4104Cip/projet/images/' + img.image);
+    console.log(img.image);
   }
 
 }

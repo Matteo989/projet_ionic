@@ -86,4 +86,5 @@
         <variable name="APP_ID" value="5cd00895" />
         <variable name="CHANNEL_NAME" value="Master --variable UPDATE_METHOD=background" />
     </plugin>
+    <plugin name="com-sarriaroman-photoviewer" spec="^1.1.16" />
 </widget>

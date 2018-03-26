@@ -22,7 +22,7 @@ export class GaleriePage {
 	galerie: any;
   connexion: {login: string, password: string} = {login:'', password:''};
 
-  constructor(private photoViewer: PhotoViewer, public navCtrl: NavController, private storage: Storage, public navParams: NavParams, public http: Http) {
+  constructor(public navCtrl: NavController, private storage: Storage, public navParams: NavParams, public http: Http) {
     this.storage.get('login').then((valeur) => {
       this.connexion.login = valeur;
       this.storage.get('password').then((valeur) => {
@@ -48,11 +48,6 @@ export class GaleriePage {
         console.log('Async operation has ended');
         refresher.complete();
     }, 2000);
-  }
-
-  afficher(img) {
-    this.photoViewer.show('http://www.sebastien-thon.fr/cours/M4104Cip/projet/images/' + img.image);
-    console.log(img.image);
   }
 
 }

@@ -30,7 +30,7 @@
 		<ion-row *ngFor="let g of galerie">
 	  			<!-- Affichage des images -->
 	  		<ion-col col-4  *ngFor="let img of g.photos" >
-	  			<img src="http://www.sebastien-thon.fr/cours/M4104Cip/projet/images/{{img.image}}" (click)="afficher(img)"/>
+	  			<img src="http://www.sebastien-thon.fr/cours/M4104Cip/projet/images/{{img.image}}" class="thumb-img" imageViewer/>
 	  		</ion-col>
 	  	</ion-row>
 

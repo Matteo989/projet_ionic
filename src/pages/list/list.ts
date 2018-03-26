@@ -27,7 +27,7 @@ export class ListPage {
         });
       });
     });
-    this.Initialisation();
+    this.items = this.articles;
   }
 
   disconnect() {

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { SlidePage } from '../slide/slide';
 import { ListPage } from '../list/list';
 import { Storage } from '@ionic/storage';
 import { ConnexionPage } from '../connexion/connexion';
@@ -15,6 +16,15 @@ export class HomePage {
 	  	this.storage.get('login').then((valeur) => {
 	        console.log('Ma variable contient ', valeur);
 	    });
+	}
+
+	ionViewDidLoad() {
+  		this.storage.get('login').then(done => {
+    		if (!done) {
+    			this.storage.set('intro-done', true);
+    			this.navCtrl.setRoot(SlidePage);
+    		}
+  		});
 	}
 
 	disconnect() {

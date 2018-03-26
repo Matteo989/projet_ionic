@@ -24,6 +24,7 @@ export class ListPage {
         .map(res => res.json())
         .subscribe(data => {
           this.articles = data.articles;
+          this.items = this.articles;
         });
       });
     });
@@ -57,6 +58,15 @@ export class ListPage {
           console.log('Async operation has ended');
           refresher.complete();
       }, 2000);
+  }
+
+  addFav(article,value) {
+    if(value){
+    this.storage.set('favori',article);
+    console.log(article);
+    console.log(value);
+    }
+
   }
 
 }

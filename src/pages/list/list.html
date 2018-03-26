@@ -15,18 +15,17 @@
         <ion-refresher-content>
         </ion-refresher-content>
     </ion-refresher>
-    
+
 <ion-searchbar
   [(ngModel)]="myInput"
   [showCancelButton]="shouldShowCancel"
   (ionInput)="Input($event)">
 </ion-searchbar>
 
-
 <ion-card *ngFor="let a of items">
 
     <ion-card-title> {{a.titre}}
-      <ion-icon  ios="ios-star-outline" md="md-star-outline"></ion-icon>
+      <ion-toggle [(ngModel)] = "a.fav" (ionChange)="addFav(a.id, a.fav)"></ion-toggle>
     </ion-card-title>
 
     <h3 color="test"> {{a.date}} </h3>
@@ -45,6 +44,6 @@
 
 
 
-  </ion-card>
+</ion-card>
 
 </ion-content>

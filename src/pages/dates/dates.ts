@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Storage } from '@ionic/storage';
-import { ConnexionPage } from '../connexion/connexion';
 import { Calendar } from '@ionic-native/calendar';
 
 /**
@@ -52,7 +51,10 @@ export class DatesPage {
 	}
 
   ajouterDate(title,notes,startDate) {
-    this.calendar.createEvent(title,null,notes,startDate,(startDate+1));
+    this.calendar.createCalendar('MyCalendar').then(
+      (msg) => { console.log(msg); },
+      (err) => { console.log(err); }
+    );
   }
 
 }

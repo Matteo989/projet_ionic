@@ -4,6 +4,7 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Storage } from '@ionic/storage';
 import { Calendar } from '@ionic-native/calendar';
+import { AlertController } from 'ionic-angular';
 
 /**
  * Generated class for the DatesPage page.
@@ -22,7 +23,7 @@ export class DatesPage {
   date: any;
   connexion: {login: string, password: string} = {login:'', password:''};
   	
-  constructor(private calendar: Calendar, public navCtrl: NavController, private storage: Storage, public navParams: NavParams, public http: Http) {
+  constructor(private alertCtrl: AlertController, private calendar: Calendar, public navCtrl: NavController, private storage: Storage, public navParams: NavParams, public http: Http) {
     this.storage.get('login').then((valeur) => {
       this.connexion.login = valeur;
       this.storage.get('password').then((valeur) => {
@@ -55,6 +56,12 @@ export class DatesPage {
       (msg) => { console.log(msg); },
       (err) => { console.log(err); }
     );
+    let alert = this.alertCtrl.create({
+      title: 'Date ajoutée',
+      subTitle: 'La date a bien été ajoutée dans votre calendrier.',
+      buttons: ['Fermer']
+    });
+    alert.present();
   }
 
 }

@@ -17,7 +17,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Contacts } from '@ionic-native/contacts';
 import { Calendar } from '@ionic-native/calendar';
-import { PhotoViewer } from '@ionic-native/photo-viewer';
+import { IonicImageViewerModule } from 'ionic-img-viewer';
 
 @NgModule({
   declarations: [
@@ -34,6 +34,7 @@ import { PhotoViewer } from '@ionic-native/photo-viewer';
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
+    IonicImageViewerModule,
     IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
@@ -52,7 +53,6 @@ import { PhotoViewer } from '@ionic-native/photo-viewer';
     SplashScreen,
     Contacts,
     Calendar,
-    PhotoViewer,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

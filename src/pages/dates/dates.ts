@@ -22,11 +22,7 @@ import { AlertController } from 'ionic-angular';
 export class DatesPage {
   date: any;
   connexion: {login: string, password: string} = {login:'', password:''};
-  rdv = {title: 'Présentation Projet Ionic',
-  location: "IUT Arles",
-  startDate: new Date(),
-  endDate: new Date(),
-  info: 'On espère avoir une bonne note'};
+  rdv = {location: "Ecole le petit prince"};
   	
   constructor(private alertCtrl: AlertController, private calendar: Calendar, public navCtrl: NavController, private storage: Storage, public navParams: NavParams, public http: Http) {
     this.storage.get('login').then((valeur) => {
@@ -56,8 +52,8 @@ export class DatesPage {
   	}, 2000);
 	}
 
-  ajouterDate() {
-    this.calendar.createEvent(this.rdv.title, this.rdv.location, this.rdv.info, this.rdv.endDate, this.rdv.startDate);
+  ajouterDate(titre, date, texte) {
+    this.calendar.createEvent(titre, this.rdv.location, texte, date, date);
     let alert = this.alertCtrl.create({
       title: 'Date ajoutée',
       subTitle: 'La date a bien été ajoutée dans votre calendrier.',

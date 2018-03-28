@@ -60,11 +60,15 @@ export class ListPage {
       }, 2000);
   }
 
-  addFav(article,value) {
-    if(value){
-    this.storage.set('favori',article);
-    console.log(article);
-    console.log(value);
+  addFav(article,check) {
+    let key = 'article' + article.id;
+    if(check){
+      this.storage.set(key, article);
+      console.log(key);
+      console.log(article);
+    }
+    else{
+      this.storage.remove(key);
     }
 
   }

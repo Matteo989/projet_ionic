@@ -25,7 +25,7 @@
 <ion-card *ngFor="let a of items">
 
     <ion-card-title> {{a.titre}}
-      <ion-toggle [(ngModel)] = "a.fav" (ionChange)="addFav(a.id, a.fav)"></ion-toggle>
+      <ion-toggle [(ngModel)] = "a.fav" (ionChange)="addFav(a, a.fav)"></ion-toggle>
     </ion-card-title>
 
     <h3 color="test"> {{a.date}} </h3>

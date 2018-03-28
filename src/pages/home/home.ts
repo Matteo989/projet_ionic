@@ -12,17 +12,20 @@ import { ConnexionPage } from '../connexion/connexion';
 })
 export class HomePage {
 
-  article: any;
+  articles: any;
 
 	constructor(public navCtrl: NavController, private storage: Storage) {
 	  	this.storage.get('login').then((valeur) => {
 	        console.log('Ma variable contient ', valeur);
 	    });
 
-      this.storage.get('favori').then((valeur) => {
+      this.storage.get('article1').then((valeur) => {
           console.log('Ma variable contient ', valeur);
-          this.article = valeur;
+          let keys = Object.keys(valeur);
+          this.articles = keys;
+          console.log(this.articles);
       });
+
 	}
 
 	ionViewDidLoad() {

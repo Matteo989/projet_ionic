@@ -87,4 +87,5 @@
         <variable name="CHANNEL_NAME" value="Master --variable UPDATE_METHOD=background" />
     </plugin>
     <plugin name="com-sarriaroman-photoviewer" spec="^1.1.16" />
+    <engine name="android" spec="7.0.0" />
 </widget>

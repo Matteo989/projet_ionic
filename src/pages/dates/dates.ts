@@ -27,7 +27,7 @@ export class DatesPage {
   location: "IUT d'Arles",
   startDate: new Date(),
   endDate: new Date(),
-  info: 'On espère une bonne note pour finir l\'année :)'};
+  info: 'On espère une bonne note pour finir le semestre.'};
   	
   constructor(private alertCtrl: AlertController, private calendar: Calendar, public navCtrl: NavController, private storage: Storage, public navParams: NavParams, public http: Http) {
     this.storage.get('login').then((valeur) => {
@@ -57,8 +57,13 @@ export class DatesPage {
   	}, 2000);
 	}
 
-  ajouterDate() {
-    this.calendar.createEvent(this.rdv1.title, this.rdv1.location, this.rdv1.info, this.rdv1.endDate, this.rdv1.startDate);
+  ajouterDate(title, notes, date) {
+    this.calendar.createCalendar('DateImportantes').then(
+      (msg) => { console.log(msg); },
+      (err) => { console.log(err); }
+    );
+    this.calendar.hasReadWritePermission();
+    this.calendar.createEvent(title, "Ecole petit Prince", notes, date, date);
     let alert = this.alertCtrl.create({
       title: 'Date ajoutée',
       subTitle: 'La date a bien été ajoutée dans votre calendrier.',

@@ -54,7 +54,14 @@ export class ConnexionPage {
           this.storage.set('login', this.connexion.login);
           this.storage.set('password', this.connexion.password);
           this.storage.set('rememberMe', this.connexion.rememberMe);
-          this.navCtrl.setRoot(SlidePage);
+          this.storage.get('intro-done').then(done => {
+            if (!done) {
+              this.navCtrl.setRoot(SlidePage);
+            }
+            else {
+              this.navCtrl.setRoot(HomePage);
+            }
+          });
         }
         else
         {

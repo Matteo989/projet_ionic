@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
+import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the SlidePage page.
@@ -16,11 +17,11 @@ import { HomePage } from '../home/home';
 })
 export class SlidePage {
 
-	constructor(public navCtrl: NavController, public navParams: NavParams) {
+	constructor(private storage: Storage, public navCtrl: NavController, public navParams: NavParams) {
 	}
 
 	ionViewDidLoad() {
-	    console.log('ionViewDidLoad SlidePage');
+	    this.storage.set('intro-done', true);
 	}
 
 	dismiss() {

@@ -26,7 +26,17 @@ export class ConnexionPage {
   = {login: '', password: '', rememberMe: false};
 
   constructor(private alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, public http: Http, private storage: Storage) {
-    
+    this.storage.get('rememberMe').then((valeur) => {
+      this.connexion.rememberMe=valeur;
+      if(this.connexion.rememberMe == true){
+      this.storage.get('login').then((valeur) => {
+        this.connexion.login = valeur;
+      });
+      this.storage.get('password').then((valeur) => {
+        this.connexion.password = valeur;
+      });
+    }
+    });
   }
  
 
@@ -35,19 +45,15 @@ export class ConnexionPage {
   }
  
   connexionOK() {
-    console.log(this.connexion);
     this.http.get('http://www.sebastien-thon.fr/cours/M4104Cip/projet/index.php?connexion&login=' + this.connexion.login + '&mdp=' + this.connexion.password)
       .map(res => res.json())
       .subscribe(data => {
         this.resultats = data;
-        console.log(this.resultats);
         if(this.resultats.resultat=='OK')
         {
           this.storage.set('login', this.connexion.login);
           this.storage.set('password', this.connexion.password);
-          this.storage.get('login').then((valeur) => {
-            console.log('Ma variable contient ', valeur);
-          });
+          this.storage.set('rememberMe', this.connexion.rememberMe);
           this.navCtrl.setRoot(SlidePage);
         }
         else
@@ -58,7 +64,6 @@ export class ConnexionPage {
             buttons: ['Fermer']
           });
           alert.present();
-          console.log('echec critique');
         }
     });
   }

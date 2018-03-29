@@ -23,7 +23,7 @@ import 'rxjs/add/operator/map';
 export class ConnexionPage {
   resultats: any;
   connexion: {login: string, password: string, rememberMe: boolean}
-  = {login: 'classe1', password: 'mdp1', rememberMe: true};
+  = {login: '', password: '', rememberMe: false};
 
   constructor(private alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, public http: Http, private storage: Storage) {
     

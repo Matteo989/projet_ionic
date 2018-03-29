@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 import { Storage } from '@ionic/storage';
 import { Calendar } from '@ionic-native/calendar';
 import { AlertController } from 'ionic-angular';
+import * as moment from 'moment';
 
 /**
  * Generated class for the DatesPage page.
@@ -22,11 +23,11 @@ import { AlertController } from 'ionic-angular';
 export class DatesPage {
   date: any;
   connexion: {login: string, password: string} = {login:'', password:''};
-  rdv = {title: 'Présentation Projet Ionic',
-  location: "IUT Arles",
-  startDate: new Date('2018-03-29T10:00Z'),
-  endDate: new Date('2018-03-29T11:00Z'),
-  info: 'On espère avoir une bonne note'};
+  rdv1 = {title: 'Première date',
+  location: "Ecole le petit prince",
+  startDate: moment('2018-02-14 10:00:00').toDate(),
+  endDate: moment('2018-02-14 12:00:00').toDate(),
+  info: 'Le texte de la première date'};
   	
   constructor(private alertCtrl: AlertController, private calendar: Calendar, public navCtrl: NavController, private storage: Storage, public navParams: NavParams, public http: Http) {
     this.storage.get('login').then((valeur) => {
@@ -56,8 +57,8 @@ export class DatesPage {
   	}, 2000);
 	}
 
-  ajouterDate(titre, ) {
-    this.calendar.createEvent(this.rdv.title, this.rdv.location, this.rdv.info, this.rdv.endDate, this.rdv.startDate);
+  ajouterDate() {
+    this.calendar.createEvent(this.rdv1.title, this.rdv1.location, this.rdv1.info, this.rdv1.endDate, this.rdv1.startDate);
     let alert = this.alertCtrl.create({
       title: 'Date ajoutée',
       subTitle: 'La date a bien été ajoutée dans votre calendrier.',

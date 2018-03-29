@@ -23,11 +23,11 @@ import * as moment from 'moment';
 export class DatesPage {
   date: any;
   connexion: {login: string, password: string} = {login:'', password:''};
-  rdv1 = {title: 'Première date',
-  location: "Ecole le petit prince",
-  startDate: moment('2018-02-14 10:00:00').toDate(),
-  endDate: moment('2018-02-14 12:00:00').toDate(),
-  info: 'Le texte de la première date'};
+  rdv1 = {title: 'Présentation du projet Ionic',
+  location: "IUT d'Arles",
+  startDate: new Date(),
+  endDate: new Date(),
+  info: 'On espère une bonne note pour finir l\'année :)'};
   	
   constructor(private alertCtrl: AlertController, private calendar: Calendar, public navCtrl: NavController, private storage: Storage, public navParams: NavParams, public http: Http) {
     this.storage.get('login').then((valeur) => {
